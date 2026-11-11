@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logga in</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Logga in</h1>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <p class="message">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('login') }}">
+
+            <label for="användarnamn">Användarnamn:</label>
+            <input type="text" id="användarnamn"
+                   name="användarnamn" required>
+
+            <label for="lösenord">Lösenord:</label>
+            <input type="password" id="lösenord"
+                   name="lösenord" required>
+
+            <button type="submit">Logga in</button>
+
+        </form>
+
+        <p>Har du inget konto?</p>
+        <a href="{{ url_for('register') }}">Registrera dig</a>
+
+        <br><br>
+        <a href="{{ url_for('home') }}">Tillbaka till startsidan</a>
+    </main>
+
+</body>
+</html>
